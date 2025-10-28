@@ -1,0 +1,183 @@
+<!-- 
+    File: index.html
+    Smart DocOps Agent - IDP-Powered AI Assistant Demo
+    An intelligent document processing system that ingests, validates, and reconciles supplier documents
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart DocOps Agent - Intelligent Document Processing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Branding -->
+    <header class="header">
+        <div class="container header-content">
+            <h1 class="header-title">Smart DocOps Agent</h1>
+            <div class="header-subtitle">AI-Powered Document Operations Intelligence</div>
+            <div class="logo-container">
+                <img src="shellkode.png" alt="Shellkode" class="logo">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="main-container">
+        <div class="container">
+            
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2 class="hero-title">Autonomous Document Processing & Validation</h2>
+                    <p class="hero-description">
+                        IDP-powered agentic AI that ingests supplier documents, validates transactions, 
+                        and triggers intelligent workflows automatically.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Stats Dashboard -->
+            <section class="stats-grid">
+                <div class="stat-card stat-card-primary">
+                    <div class="stat-icon">📄</div>
+                    <div class="stat-value" id="docsProcessed">0</div>
+                    <div class="stat-label">Documents Processed</div>
+                </div>
+                <div class="stat-card stat-card-success">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value" id="matchRate">0%</div>
+                    <div class="stat-label">Match Success Rate</div>
+                </div>
+                <div class="stat-card stat-card-warning">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value" id="savingsAmount">$0</div>
+                    <div class="stat-label">Potential Savings</div>
+                </div>
+                <div class="stat-card stat-card-info">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-value" id="processingTime">0s</div>
+                    <div class="stat-label">Avg Processing Time</div>
+                </div>
+            </section>
+
+            <!-- AI Agent Workflow Visualization -->
+            <section class="workflow-section">
+                <h3 class="section-title">AI Agent Workflow</h3>
+                <div class="workflow-container">
+                    <div class="workflow-step" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">📥</div>
+                        <div class="step-title">Ingest + Extract</div>
+                        <div class="step-description">OCR + LLM extraction</div>
+                        <div class="step-status" id="step1-status">Ready</div>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">🔍</div>
+                        <div class="step-title">Validate + Match</div>
+                        <div class="step-description">3-way matching</div>
+                        <div class="step-status" id="step2-status">Pending</div>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">🤖</div>
+                        <div class="step-title">Classify + Act</div>
+                        <div class="step-description">Autonomous routing</div>
+                        <div class="step-status" id="step3-status">Pending</div>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">📊</div>
+                        <div class="step-title">Insight Generation</div>
+                        <div class="step-description">Analytics & learning</div>
+                        <div class="step-status" id="step4-status">Pending</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Document Upload & Processing -->
+            <section class="processing-section">
+                <div class="processing-grid">
+                    <div class="upload-panel">
+                        <h3 class="section-title">Upload Documents</h3>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">📎</div>
+                            <p class="upload-text">Drag & Drop or Click to Upload</p>
+                            <p class="upload-subtext">Invoices, POs, ASNs, Credit Memos</p>
+                            <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.png" hidden>
+                        </div>
+                        <div class="demo-buttons">
+                            <button class="btn btn-primary" id="processDemoBtn">
+                                <span class="btn-icon">🚀</span>
+                                Process Demo Documents
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="extraction-panel">
+                        <h3 class="section-title">Extracted Data</h3>
+                        <div class="extraction-display" id="extractionDisplay">
+                            <div class="empty-state">
+                                <div class="empty-icon">📋</div>
+                                <p>No documents processed yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Document Processing Results -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h3 class="section-title">Processing Results</h3>
+                <div class="results-tabs">
+                    <button class="tab-btn active" data-tab="matched">✅ Matched</button>
+                    <button class="tab-btn" data-tab="mismatch">⚠ Mismatches</button>
+                    <button class="tab-btn" data-tab="earlypay">💰 Early Pay</button>
+                    <button class="tab-btn" data-tab="duplicates">🔄 Duplicates</button>
+                </div>
+                <div class="results-content" id="resultsContent">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </section>
+
+            <!-- AI Insights Panel -->
+            <section class="insights-section" id="insightsSection" style="display: none;">
+                <h3 class="section-title">🧠 AI-Generated Insights</h3>
+                <div class="insights-grid" id="insightsGrid">
+                    <!-- Dynamic insights will be inserted here -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Shellkode. All rights reserved. | Powered by Advanced AI & IDP Technology</p>
+        </div>
+    </footer>
+
+    <!-- Processing Modal -->
+    <div class="modal" id="processingModal">
+        <div class="modal-content">
+            <div class="processing-animation">
+                <div class="spinner"></div>
+                <h3 id="processingText">Processing Documents...</h3>
+                <p id="processingSubtext">AI Agent is analyzing your documents</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
